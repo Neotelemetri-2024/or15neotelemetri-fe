@@ -3,7 +3,7 @@ import TimerUngu from "../../assets/images/Timer_Ungu.png";
 
 const TARGET_DATE = new Date("2026-04-04T00:00:00");
 
-function TimerSection() {
+function getTimeLeft() {
   const now = new Date();
   const diff = TARGET_DATE - now;
 
@@ -22,12 +22,12 @@ function TimeBox({ value, label }) {
   const digits = padded.split("");
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="flex gap-2">
+    <div className="flex flex-col items-center gap-1 md:gap-3">
+      <div className="flex gap-1 md:gap-2">
         {digits.map((digit, i) => (
           <div
             key={i}
-            className="w-[80px] h-[80px] flex items-center justify-center  text-white text-4xl font-bold"
+            className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] flex items-center justify-center text-white text-lg md:text-3xl font-bold rounded-lg"
             style={{
               background: "rgba(80, 40, 120, 0.55)",
               backdropFilter: "blur(8px)",
@@ -41,7 +41,7 @@ function TimeBox({ value, label }) {
           </div>
         ))}
       </div>
-      <span className="text-white/60 text-sm tracking-widest uppercase">
+      <span className="text-white/60 text-[10px] md:text-sm tracking-widest uppercase">
         {label}
       </span>
     </div>
@@ -49,47 +49,46 @@ function TimeBox({ value, label }) {
 }
 
 export default function CountdownSection() {
-  const [timeLeft, setTimeLeft] = useState(TimerSection());
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeLeft(TimerSection());
+      setTimeLeft(getTimeLeft());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen py-72 flex flex-col items-center justify-center overflow-visible">
-      {/* ===== BACKGROUND FULL ===== */}
+    <section className="relative w-full min-h-screen py-12 md:py-24 flex flex-col items-center justify-center overflow-hidden">
+      
+      {/* BACKGROUND */}
       <img
         src={TimerUngu}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 overflow-hidden"
       />
 
-      {/* OPTIONAL OVERLAY */}
-      
+      {/* TITLE */}
+      <p className="relative z-10 text-white text-lg md:text-3xl font-bold mb-6 md:mb-12 text-center px-4">
+        We Are coming <span className="text-white/60">Soon!</span>
+      </p>
 
-      {/* ===== TITLE ===== */}
-        <p className="relative -top-20 z-10 text-white text-3xl font-bold mb-14 text-center">
-            We Are coming <span className="text-white/60">Soon!</span>
-        </p>
-
-      {/* ===== COUNTDOWN ===== */}
-      <div className="relative z-10 -top-20 flex items-center gap-8">
+      {/* COUNTDOWN */}
+      <div className="relative z-10 flex flex-wrap justify-center items-center gap-3 md:gap-8 px-4">
+        
         <TimeBox value={timeLeft.days} label="Days" />
 
-        <span className="text-white/60 text-4xl font-light mb-6">:</span>
+        <span className="hidden md:block text-white/60 text-4xl">:</span>
 
         <TimeBox value={timeLeft.hours} label="Hours" />
 
-        <span className="text-white/60 text-4xl font-light mb-6">:</span>
+        <span className="hidden md:block text-white/60 text-4xl">:</span>
 
         <TimeBox value={timeLeft.minutes} label="Minutes" />
 
-        <span className="text-white/60 text-4xl font-light mb-6">:</span>
+        <span className="hidden md:block text-white/60 text-4xl">:</span>
 
-        <TimeBox value={timeLeft.seconds} label="Detik" />
+        <TimeBox value={timeLeft.seconds} label="Seconds" />
       </div>
     </section>
   );

@@ -2,6 +2,8 @@ import circlePurple from "../../assets/images/Bulat_Ungu.png";
 import logoORWhite from "../../assets/images/Logo_OR_White.png";
 import { Link } from "react-router-dom";
 import SidebarUser from "./SidebarItem";
+import { useState } from "react";
+import { Menu } from "lucide-react";
 import {
   Home,
   ShieldCheck,
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 
 export default function UserLayout({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="flex min-h-screen bg-[#1a0023] text-white overflow-hidden relative">
       {/* ================= BACKGROUND ================= */}
@@ -35,7 +38,10 @@ export default function UserLayout({ children }) {
       <div className="absolute -bottom-40 -right-40 w-[300px] h-[300px] bg-[#01FFFF] blur-[80px] rounded-full" />
 
       {/* ================= SIDEBAR ================= */}
-      <aside className="fixed left-0 top-0 h-screen w-[260px] bg-[#501A5E] flex flex-col justify-between py-8 px-6 z-20 shadow-xl">
+      <aside
+        className={`fixed top-0 left-0 h-screen w-[260px] bg-[#501A5E] flex flex-col justify-between py-8 px-6 z-20 shadow-xl transition-transform duration-300
+  ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      >
         {/* Logo */}
         <div>
           <div className="mb-10">
@@ -49,7 +55,7 @@ export default function UserLayout({ children }) {
               icon={<Home size={18} />}
               label="Dashboard"
             />
-            
+
             <SidebarUser
               to="/verifikasi"
               icon={<ShieldCheck size={18} />}
@@ -91,7 +97,25 @@ export default function UserLayout({ children }) {
       </aside>
 
       {/* ================= CONTENT ================= */}
-      <main className="ml-[260px] flex-1 relative z-10 p-10">{children}</main>
+      <main
+        className={`flex-1 relative z-10 transition-all duration-300
+  ${isOpen ? "ml-[260px]" : "ml-0"}`}
+      >
+        {/* ===== TOP BAR ===== */}
+        <div className="flex items-center gap-4 px-6 py-4">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="bg-white/10 backdrop-blur px-3 py-2 rounded-lg hover:bg-white/20 transition"
+          >
+            <Menu size={18} />
+          </button>
+
+          
+        </div>
+
+        {/* ===== CONTENT ===== */}
+        <div className="p-6">{children}</div>
+      </main>
     </div>
   );
 }

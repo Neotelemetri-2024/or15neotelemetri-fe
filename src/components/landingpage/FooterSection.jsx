@@ -2,13 +2,7 @@ import logoNeo from "../../assets/images/Logo_Neo_White.svg";
 import { Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { FaTiktok, FaSpotify } from "react-icons/fa";
 
-const quickLinks = [
-  "Home",
-  "Division",
-  "Project",
-  "Achievement",
-  "FAQ",
-];
+const quickLinks = ["Home", "Division", "Project", "Achievement", "FAQ"];
 
 const websiteTeam = [
   { role: "Fronted Developer", name: "Reynard Ghazy Tsaqif" },
@@ -28,13 +22,14 @@ const socials = [
 export default function FooterSection() {
   return (
     <footer className="relative border-t border-white/10 pt-14 pb-6 overflow-hidden">
-      {/* subtle top glow */}
+      {/* top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <div className="max-w-[1200px] mx-auto px-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
-          {/* ===== COL 1: LOGO + ALAMAT ===== */}
-          <div className="flex flex-col gap-4">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10">
+
+          {/* COL 1: LOGO + ALAMAT — full width di mobile */}
+          <div className="col-span-2 lg:col-span-1 flex flex-col gap-4">
             <img src={logoNeo} alt="Neo Telemetri" className="w-[140px]" />
             <p className="text-white/50 text-sm leading-relaxed">
               Neo Telemetri, Lt. 2, Gedung Pusat Kegiatan Mahasiswa, Universitas
@@ -42,12 +37,11 @@ export default function FooterSection() {
             </p>
           </div>
 
-          {/* ===== COL 2: QUICK LINKS ===== */}
+          {/* COL 2: QUICK LINKS */}
           <div className="flex flex-col gap-3">
             <h4 className="text-white font-bold text-sm tracking-widest uppercase mb-1">
               Quick Links
             </h4>
-
             {quickLinks.map((link, i) => (
               <a
                 key={i}
@@ -59,23 +53,21 @@ export default function FooterSection() {
             ))}
           </div>
 
-          {/* ===== COL 3: WEBSITE TEAM ===== */}
+          {/* COL 3: WEBSITE TEAM */}
           <div className="flex flex-col gap-3">
             <h4 className="text-white font-bold text-sm tracking-widest uppercase mb-1">
               Website
             </h4>
             {websiteTeam.map((member, i) => (
               <div key={i}>
-                <p className="text-white font-semibold text-sm">
-                  {member.role}
-                </p>
+                <p className="text-white font-semibold text-sm">{member.role}</p>
                 <p className="text-white/50 text-sm">{member.name}</p>
               </div>
             ))}
           </div>
 
-          {/* ===== COL 4: FOLLOW + CONTACT ===== */}
-          <div className="flex flex-col gap-5">
+          {/* COL 4: FOLLOW + CONTACT */}
+          <div className="col-span-2 lg:col-span-1 flex flex-col gap-5">
             <div>
               <h4 className="text-white font-bold text-sm tracking-widest uppercase mb-4">
                 Follow Us
@@ -106,7 +98,7 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* ===== BOTTOM BAR ===== */}
+        {/* BOTTOM BAR */}
         <div className="border-t border-white/10 pt-6 text-center">
           <p className="text-white/30 text-xs">
             © {new Date().getFullYear()} Neo Telemetri. All rights reserved.

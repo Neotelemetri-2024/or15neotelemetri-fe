@@ -6,235 +6,30 @@ import logoORWhite from "../../assets/images/Logo_OR_White.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-// Data circuit SAMA PERSIS dengan Register — mirror dilakukan via CSS scaleX(-1) di SVG
 const CIRCUIT_LINES = [
-  {
-    x: 0,
-    y: 150,
-    segments: [
-      { dx: 60, dy: 0 },
-      { dx: 0, dy: -40 },
-      { dx: 80, dy: 0 },
-    ],
-    delay: 0.0,
-  },
-  {
-    x: 0,
-    y: 190,
-    segments: [
-      { dx: 90, dy: 0 },
-      { dx: 0, dy: 30 },
-      { dx: 60, dy: 0 },
-    ],
-    delay: 0.15,
-  },
-  {
-    x: 0,
-    y: 230,
-    segments: [
-      { dx: 50, dy: 0 },
-      { dx: 0, dy: -40 },
-      { dx: 100, dy: 0 },
-    ],
-    delay: 0.3,
-  },
-  {
-    x: 0,
-    y: 270,
-    segments: [
-      { dx: 120, dy: 0 },
-      { dx: 0, dy: 30 },
-      { dx: 80, dy: 0 },
-    ],
-    delay: 0.45,
-  },
-  {
-    x: 0,
-    y: 310,
-    segments: [
-      { dx: 70, dy: 0 },
-      { dx: 0, dy: -30 },
-      { dx: 110, dy: 0 },
-    ],
-    delay: 0.6,
-  },
-  {
-    x: 0,
-    y: 350,
-    segments: [
-      { dx: 100, dy: 0 },
-      { dx: 0, dy: 40 },
-      { dx: 70, dy: 0 },
-    ],
-    delay: 0.75,
-  },
-  {
-    x: 0,
-    y: 390,
-    segments: [
-      { dx: 60, dy: 0 },
-      { dx: 0, dy: -50 },
-      { dx: 90, dy: 0 },
-    ],
-    delay: 0.9,
-  },
-  {
-    x: 0,
-    y: 430,
-    segments: [
-      { dx: 130, dy: 0 },
-      { dx: 0, dy: 40 },
-      { dx: 60, dy: 0 },
-    ],
-    delay: 1.05,
-  },
-  {
-    x: 0,
-    y: 470,
-    segments: [
-      { dx: 80, dy: 0 },
-      { dx: 0, dy: -40 },
-      { dx: 100, dy: 0 },
-    ],
-    delay: 1.2,
-  },
-  {
-    x: 0,
-    y: 510,
-    segments: [
-      { dx: 50, dy: 0 },
-      { dx: 0, dy: 50 },
-      { dx: 90, dy: 0 },
-    ],
-    delay: 1.35,
-  },
-  {
-    x: 0,
-    y: 550,
-    segments: [
-      { dx: 110, dy: 0 },
-      { dx: 0, dy: -40 },
-      { dx: 80, dy: 0 },
-    ],
-    delay: 1.5,
-  },
-  {
-    x: 40,
-    y: 100,
-    segments: [
-      { dx: 0, dy: 200 },
-      { dx: 40, dy: 0 },
-      { dx: 0, dy: 150 },
-    ],
-    delay: 0.2,
-  },
-  {
-    x: 100,
-    y: 80,
-    segments: [
-      { dx: 0, dy: 180 },
-      { dx: -40, dy: 0 },
-      { dx: 0, dy: 200 },
-    ],
-    delay: 0.5,
-  },
-  {
-    x: 160,
-    y: 120,
-    segments: [
-      { dx: 0, dy: 160 },
-      { dx: 50, dy: 0 },
-      { dx: 0, dy: 140 },
-    ],
-    delay: 0.8,
-  },
-  {
-    x: 0,
-    y: 80,
-    segments: [
-      { dx: 80, dy: 0 },
-      { dx: 0, dy: 50 },
-      { dx: 60, dy: 0 },
-    ],
-    delay: 1.65,
-  },
-  {
-    x: 0,
-    y: 110,
-    segments: [
-      { dx: 120, dy: 0 },
-      { dx: 0, dy: -30 },
-    ],
-    delay: 1.8,
-  },
-  {
-    x: 30,
-    y: 60,
-    segments: [
-      { dx: 60, dy: 0 },
-      { dx: 0, dy: 80 },
-    ],
-    delay: 1.95,
-  },
-  {
-    x: 0,
-    y: 590,
-    segments: [
-      { dx: 90, dy: 0 },
-      { dx: 0, dy: -50 },
-      { dx: 70, dy: 0 },
-    ],
-    delay: 2.1,
-  },
-  {
-    x: 0,
-    y: 630,
-    segments: [
-      { dx: 140, dy: 0 },
-      { dx: 0, dy: -60 },
-    ],
-    delay: 2.25,
-  },
-  {
-    x: 50,
-    y: 670,
-    segments: [
-      { dx: 100, dy: 0 },
-      { dx: 0, dy: -80 },
-      { dx: 80, dy: 0 },
-    ],
-    delay: 2.4,
-  },
-  {
-    x: 140,
-    y: 200,
-    segments: [
-      { dx: 80, dy: 0 },
-      { dx: 0, dy: -40 },
-      { dx: 60, dy: 0 },
-    ],
-    delay: 2.55,
-  },
-  {
-    x: 200,
-    y: 320,
-    segments: [
-      { dx: 60, dy: 0 },
-      { dx: 0, dy: 40 },
-      { dx: 50, dy: 0 },
-    ],
-    delay: 2.7,
-  },
-  {
-    x: 170,
-    y: 440,
-    segments: [
-      { dx: 70, dy: 0 },
-      { dx: 0, dy: -30 },
-      { dx: 50, dy: 0 },
-    ],
-    delay: 2.85,
-  },
+  { x: 0, y: 150, segments: [{ dx: 60, dy: 0 }, { dx: 0, dy: -40 }, { dx: 80, dy: 0 }], delay: 0.0 },
+  { x: 0, y: 190, segments: [{ dx: 90, dy: 0 }, { dx: 0, dy: 30 }, { dx: 60, dy: 0 }], delay: 0.15 },
+  { x: 0, y: 230, segments: [{ dx: 50, dy: 0 }, { dx: 0, dy: -40 }, { dx: 100, dy: 0 }], delay: 0.3 },
+  { x: 0, y: 270, segments: [{ dx: 120, dy: 0 }, { dx: 0, dy: 30 }, { dx: 80, dy: 0 }], delay: 0.45 },
+  { x: 0, y: 310, segments: [{ dx: 70, dy: 0 }, { dx: 0, dy: -30 }, { dx: 110, dy: 0 }], delay: 0.6 },
+  { x: 0, y: 350, segments: [{ dx: 100, dy: 0 }, { dx: 0, dy: 40 }, { dx: 70, dy: 0 }], delay: 0.75 },
+  { x: 0, y: 390, segments: [{ dx: 60, dy: 0 }, { dx: 0, dy: -50 }, { dx: 90, dy: 0 }], delay: 0.9 },
+  { x: 0, y: 430, segments: [{ dx: 130, dy: 0 }, { dx: 0, dy: 40 }, { dx: 60, dy: 0 }], delay: 1.05 },
+  { x: 0, y: 470, segments: [{ dx: 80, dy: 0 }, { dx: 0, dy: -40 }, { dx: 100, dy: 0 }], delay: 1.2 },
+  { x: 0, y: 510, segments: [{ dx: 50, dy: 0 }, { dx: 0, dy: 50 }, { dx: 90, dy: 0 }], delay: 1.35 },
+  { x: 0, y: 550, segments: [{ dx: 110, dy: 0 }, { dx: 0, dy: -40 }, { dx: 80, dy: 0 }], delay: 1.5 },
+  { x: 40, y: 100, segments: [{ dx: 0, dy: 200 }, { dx: 40, dy: 0 }, { dx: 0, dy: 150 }], delay: 0.2 },
+  { x: 100, y: 80, segments: [{ dx: 0, dy: 180 }, { dx: -40, dy: 0 }, { dx: 0, dy: 200 }], delay: 0.5 },
+  { x: 160, y: 120, segments: [{ dx: 0, dy: 160 }, { dx: 50, dy: 0 }, { dx: 0, dy: 140 }], delay: 0.8 },
+  { x: 0, y: 80, segments: [{ dx: 80, dy: 0 }, { dx: 0, dy: 50 }, { dx: 60, dy: 0 }], delay: 1.65 },
+  { x: 0, y: 110, segments: [{ dx: 120, dy: 0 }, { dx: 0, dy: -30 }], delay: 1.8 },
+  { x: 30, y: 60, segments: [{ dx: 60, dy: 0 }, { dx: 0, dy: 80 }], delay: 1.95 },
+  { x: 0, y: 590, segments: [{ dx: 90, dy: 0 }, { dx: 0, dy: -50 }, { dx: 70, dy: 0 }], delay: 2.1 },
+  { x: 0, y: 630, segments: [{ dx: 140, dy: 0 }, { dx: 0, dy: -60 }], delay: 2.25 },
+  { x: 50, y: 670, segments: [{ dx: 100, dy: 0 }, { dx: 0, dy: -80 }, { dx: 80, dy: 0 }], delay: 2.4 },
+  { x: 140, y: 200, segments: [{ dx: 80, dy: 0 }, { dx: 0, dy: -40 }, { dx: 60, dy: 0 }], delay: 2.55 },
+  { x: 200, y: 320, segments: [{ dx: 60, dy: 0 }, { dx: 0, dy: 40 }, { dx: 50, dy: 0 }], delay: 2.7 },
+  { x: 170, y: 440, segments: [{ dx: 70, dy: 0 }, { dx: 0, dy: -30 }, { dx: 50, dy: 0 }], delay: 2.85 },
 ];
 
 function CircuitBackground() {
@@ -261,8 +56,7 @@ function CircuitBackground() {
 
   const buildPath = (line) => {
     let d = `M ${line.x} ${line.y}`;
-    let cx = line.x,
-      cy = line.y;
+    let cx = line.x, cy = line.y;
     for (const seg of line.segments) {
       cx += seg.dx;
       cy += seg.dy;
@@ -272,8 +66,6 @@ function CircuitBackground() {
   };
 
   return (
-    // transform scaleX(-1) membalik seluruh SVG secara horizontal
-    // sehingga circuit yang tadinya di kiri menjadi muncul di kanan
     <svg
       ref={svgRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
@@ -287,51 +79,23 @@ function CircuitBackground() {
       <defs>
         <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="2.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
         <filter id="glow-dot" x="-100%" y="-100%" width="300%" height="300%">
           <feGaussianBlur stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
       {CIRCUIT_LINES.map((line, i) => {
         const { d, endX, endY } = buildPath(line);
         return (
           <g key={i}>
-            <path
-              className="circuit-path"
-              d={d}
-              stroke="#00d4ff"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0.65"
-              filter="url(#glow-cyan)"
-              data-delay={line.delay}
-            />
-            <circle
-              className="circuit-dot"
-              cx={line.x}
-              cy={line.y}
-              r="2.5"
-              fill="#00d4ff"
-              filter="url(#glow-dot)"
-              data-delay={line.delay}
-            />
-            <circle
-              className="circuit-dot"
-              cx={endX}
-              cy={endY}
-              r="2.5"
-              fill="#00d4ff"
-              filter="url(#glow-dot)"
-              data-delay={line.delay}
-            />
+            <path className="circuit-path" d={d} stroke="#00d4ff" strokeWidth="1.5"
+              fill="none" opacity="0.65" filter="url(#glow-cyan)" data-delay={line.delay} />
+            <circle className="circuit-dot" cx={line.x} cy={line.y} r="2.5"
+              fill="#00d4ff" filter="url(#glow-dot)" data-delay={line.delay} />
+            <circle className="circuit-dot" cx={endX} cy={endY} r="2.5"
+              fill="#00d4ff" filter="url(#glow-dot)" data-delay={line.delay} />
           </g>
         );
       })}
@@ -343,49 +107,43 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="bg-black relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* ── CYAN GLOW — KANAN ─────────────────────── */}
+    <div className="bg-black relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+
+      {/* CYAN GLOW */}
       <img
         src={cyanSide}
         alt=""
-        className="absolute pointer-events-none select-none"
+        className="absolute z-0 lg:block pointer-events-none select-none"
         style={{
           top: "50%",
-          right: "10px", // lebih keluar dari layar
-          transform: "translateY(-50%) rotate(180deg) scale(1.25)", // sedikit diperbesar
-          height: "120vh", // lebih tinggi agar menyatu dengan circuit
+          right: "10px",
+          transform: "translateY(-50%) rotate(180deg) scale(1.25)",
+          height: "120vh",
           width: "auto",
           opacity: 0.9,
           zIndex: 0,
-
-          // glow agar menyatu dengan circuit
           filter: "blur(2px) drop-shadow(0 0 40px rgba(0,212,255,0.35))",
-
-          // fade ke kanan agar menyatu
-          WebkitMaskImage:
-            "linear-gradient(to right, black 25%, rgba(0,0,0,0.9) 45%, transparent 100%)",
-          maskImage:
-            "linear-gradient(to right, black 25%, rgba(0,0,0,0.9) 45%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, black 25%, rgba(0,0,0,0.9) 45%, transparent 100%)",
+          maskImage: "linear-gradient(to right, black 25%, rgba(0,0,0,0.9) 45%, transparent 100%)",
         }}
       />
 
-      {/* ── LOGO — kiri atas ─────────────────────── */}
+      {/* LOGO — kiri atas */}
       <img
         src={logoORWhite}
         alt="Open Recruitment UKM Neo Telemetri 2026"
-        className="absolute pointer-events-none select-none hidden md:block"
+        className="absolute pointer-events-none select-none"
         style={{
           top: "20px",
           left: "24px",
-          height: "52px",
+          height: "40px",
           width: "auto",
           zIndex: 20,
           opacity: 1,
         }}
       />
 
-      {/* ── PURPLE ARC GLOWS ───────────────────── */}
-      {/* Arc 1 — kiri atas */}
+      {/* PURPLE ARC — kiri atas */}
       <img
         src={purpleRing}
         alt=""
@@ -399,11 +157,12 @@ export default function Login() {
           zIndex: 0,
         }}
       />
-      {/* Arc 2 — kanan bawah */}
+
+      {/* PURPLE ARC — kanan bawah */}
       <img
         src={purpleRing}
         alt=""
-        className="absolute pointer-events-none select-none"
+        className="absolute lg:block pointer-events-none select-none"
         style={{
           bottom: "-16%",
           right: "10%",
@@ -411,32 +170,30 @@ export default function Login() {
           opacity: 0.85,
           transform: "rotate(180deg) scaleX(-1)",
           zIndex: 0,
-          WebkitMaskImage:
-            "radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%)",
-          maskImage:
-            "radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%)",
+          maskImage: "radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%)",
         }}
       />
 
-      {/* ── CIRCUIT LINES (kanan via scaleX flip) ── */}
+      {/* CIRCUIT LINES */}
       <CircuitBackground />
 
-      {/* ── CONTENT ──────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-6xl grid md:grid-cols-2 items-center gap-12 p-6">
+      {/* CONTENT */}
+      <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 items-center gap-8 lg:gap-12 py-24 lg:py-6">
+
         {/* LEFT — Card */}
         <div className="flex justify-center">
           <div
-            className="w-full max-w-md rounded-3xl p-8 text-white"
+            className="w-full max-w-md rounded-3xl p-6 lg:p-8 text-white"
             style={{
               background: "rgba(255,255,255,0.07)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.15)",
-              boxShadow:
-                "0 0 40px rgba(0,200,255,0.08), 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
+              boxShadow: "0 0 40px rgba(0,200,255,0.08), 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
             }}
           >
-            <h2 className="text-3xl font-bold mb-8 tracking-wide">Masuk</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6 lg:mb-8 tracking-wide">Masuk</h2>
 
             <form className="space-y-5">
               {/* Email */}
@@ -448,18 +205,9 @@ export default function Login() {
                   type="email"
                   placeholder="Masukkan email"
                   className="w-full px-4 py-3 rounded-full text-sm text-white placeholder-white/40 focus:outline-none transition"
-                  style={{
-                    background: "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.border = "1px solid rgba(0,210,255,0.6)";
-                    e.target.style.boxShadow = "0 0 12px rgba(0,210,255,0.2)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.border = "1px solid rgba(255,255,255,0.2)";
-                    e.target.style.boxShadow = "none";
-                  }}
+                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.2)" }}
+                  onFocus={(e) => { e.target.style.border = "1px solid rgba(0,210,255,0.6)"; e.target.style.boxShadow = "0 0 12px rgba(0,210,255,0.2)"; }}
+                  onBlur={(e) => { e.target.style.border = "1px solid rgba(255,255,255,0.2)"; e.target.style.boxShadow = "none"; }}
                 />
               </div>
 
@@ -473,18 +221,9 @@ export default function Login() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Masukkan password"
                     className="w-full px-4 py-3 pr-12 rounded-full text-sm text-white placeholder-white/40 focus:outline-none transition"
-                    style={{
-                      background: "rgba(255,255,255,0.07)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.border = "1px solid rgba(0,210,255,0.6)";
-                      e.target.style.boxShadow = "0 0 12px rgba(0,210,255,0.2)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.border = "1px solid rgba(255,255,255,0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
+                    style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.2)" }}
+                    onFocus={(e) => { e.target.style.border = "1px solid rgba(0,210,255,0.6)"; e.target.style.boxShadow = "0 0 12px rgba(0,210,255,0.2)"; }}
+                    onBlur={(e) => { e.target.style.border = "1px solid rgba(255,255,255,0.2)"; e.target.style.boxShadow = "none"; }}
                   />
                   <button
                     type="button"
@@ -505,18 +244,9 @@ export default function Login() {
               <button
                 type="submit"
                 className="w-full py-3 rounded-full font-bold text-white transition-all duration-300 mt-4"
-                style={{
-                  background: "linear-gradient(to right, #A305A6, #12B2C1)",
-                  boxShadow: "0 4px 20px rgba(163,5,166,0.4)",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.boxShadow = "0 6px 30px rgba(163,5,166,0.7)";
-                  e.target.style.transform = "translateY(-1px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.boxShadow = "0 4px 20px rgba(163,5,166,0.4)";
-                  e.target.style.transform = "translateY(0)";
-                }}
+                style={{ background: "linear-gradient(to right, #A305A6, #12B2C1)", boxShadow: "0 4px 20px rgba(163,5,166,0.4)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 6px 30px rgba(163,5,166,0.7)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(163,5,166,0.4)"; e.currentTarget.style.transform = "translateY(0)"; }}
               >
                 Masuk
               </button>
@@ -525,10 +255,7 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-400 tracking-wider">
                 Belum memiliki akun?{" "}
-                <Link
-                  to="/register"
-                  className="text-cyan-400 font-semibold hover:text-cyan-300 transition"
-                >
+                <Link to="/register" className="text-cyan-400 font-semibold hover:text-cyan-300 transition">
                   Daftar
                 </Link>
               </p>
@@ -536,21 +263,16 @@ export default function Login() {
           </div>
         </div>
 
-        {/* RIGHT — Welcome Text */}
+        {/* RIGHT */}
         <div
-          className="text-white space-y-3 text-center hidden md:block"
+          className="text-white space-y-3 text-center hidden lg:block"
           style={{
-            // mask fade ke kiri — kebalikan Register yang fade ke kanan
-            WebkitMaskImage:
-              "linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0.6) 70%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0.6) 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0.6) 70%, transparent 100%)",
+            maskImage: "linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0.6) 70%, transparent 100%)",
           }}
         >
-          <p className="text-3xl tracking-widest font-bold">
-            Hello! Welcome to
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+          <p className="text-3xl tracking-widest font-bold">Hello! Welcome to</p>
+          <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
             Open Recruitment XV
             <br />
             <span>UKM Neo Telemetri</span>

@@ -2,9 +2,11 @@ import circlePurple from "../../assets/images/Bulat_Ungu.png";
 import logoORWhite from "../../assets/images/Logo_OR_White.png";
 import { Link } from "react-router-dom";
 import SidebarAdmin from "./SidebarAdmin";
-import { LogOut } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, LogOut } from "lucide-react";
 
 export default function AdminLayout({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="flex min-h-screen  bg-[#1a0023] text-white overflow-hidden relative">
       {/* ================= BACKGROUND ================= */}
@@ -61,6 +63,7 @@ export default function AdminLayout({ children }) {
 
       {/* ================= CONTENT ================= */}
       <main className="ml-[260px] h-screen overflow-y-auto flex-1 relative z-10">
+        
         {children}
       </main>
     </div>

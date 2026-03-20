@@ -6,9 +6,9 @@ import logoSkj from "../../assets/images/logo_Skj.svg";
 import UserLayout from "../../components/user/LayoutUser";
 
 const divisions = [
-  { key: "programming", label: "Divisi Programming", logo: logoProgramming },
-  { key: "mmd", label: "Divisi Multimedia &\nDesain", logo: logoMmd },
-  { key: "skj", label: "Divisi Sistem Komputer dan\nJaringan", logo: logoSkj },
+  { key: "programming", label: "Programming", logo: logoProgramming },
+  { key: "mmd", label: "Multimedia & Desain", logo: logoMmd },
+  { key: "skj", label: "Sistem Komputer dan Jaringan", logo: logoSkj },
 ];
 
 const rules = [
@@ -44,7 +44,7 @@ export default function Ujian() {
         </div>
 
         {/* ===== DIVISION CARDS ===== */}
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-5 auto-rows-[1fr]">
           {divisions.map((div) => {
             const isSelected = selected === div.key;
             return (
@@ -73,7 +73,7 @@ export default function Ujian() {
                     className="w-[72px] h-[72px] object-contain"
                   />
                   <p
-                    className="text-sm text-center leading-snug whitespace-pre-line"
+                    className="text-sm text-center leading-snug whitespace-pre-line line-clamp-2"
                     style={{
                       color: isSelected ? "white" : "rgba(255,255,255,0.75)",
                     }}
